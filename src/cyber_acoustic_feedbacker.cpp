@@ -357,7 +357,22 @@ static const LV2_Descriptor descriptor = {
     extension_data
 };
 
-LV2_SYMBOL_EXPORT
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#if defined(_WIN32) || defined(__CYGWIN__)
+  #define LV2_EXPORT __declspec(dllexport)
+#else
+  #define LV2_EXPORT __attribute__((visibility("default")))
+#endif
+
+LV2_EXPORT
 const LV2_Descriptor* lv2_descriptor(uint32_t index) {
     return (index == 0) ? &descriptor : NULL;
 }
+
+#ifdef __cplusplus
+}
+#endif
+
