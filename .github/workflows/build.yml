@@ -2,6 +2,9 @@ name: Build Multi-Arch LV2 Binaries
 
 on: [push, workflow_dispatch]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -38,16 +41,16 @@ jobs:
           aarch64-linux-gnu-g++ -O3 -std=c++14 -fPIC -shared -march=armv8-a -I. -Isrc -I/usr/local/include $SRC -o ${NAME}_arm64.so -lm -lpthread -DNDEBUG
       - name: Create Release Package
         run: |
-          BUNDLE_NAME="cyber-acoustic-feedbacker.lv2"
+          BUNDLE_NAME="$(basename $PWD | sed 's/-lv2//').lv2"
           mkdir -p dist/$BUNDLE_NAME
           cp -r *.ttl modgui src *.dll *.so dist/$BUNDLE_NAME/ 2>/dev/null || true
-          cd dist && zip -r cyber-acoustic-feedbacker-lv2-v1.0.0.zip $BUNDLE_NAME/
+          cd dist && zip -r ${BUNDLE_NAME}.zip $BUNDLE_NAME/
       - name: Upload Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main'
         with:
           tag_name: "v1.0.0"
-          name: "cyber-acoustic-feedbacker-lv2 v1.0.0"
+          name: "v1.0.0 Release"
           files: dist/*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
