@@ -22,8 +22,10 @@ jobs:
         run: |
           SRC=$(find src -name "*.cpp" | head -n 1)
           NAME=$(basename $PWD | sed 's/-lv2//' | tr '-' '_')
+          rm -f *.dll
           x86_64-w64-mingw32-g++ -O3 -std=c++14 -shared -Wl,--export-all-symbols -static-libgcc -static-libstdc++ -I. -Isrc -I/usr/local/include $SRC -o ${NAME}.dll -lm -DNDEBUG
-          ls -lh *.dll
+          echo "=== EXPORTS IN DLL ==="
+          x86_64-w64-mingw32-objdump -p ${NAME}.dll | grep -A 20 "The Export Tables" || true
       - name: Compile Linux x86_64 SO
         run: |
           SRC=$(find src -name "*.cpp" | head -n 1)
@@ -42,6 +44,7 @@ jobs:
       - name: Create Release Package
         run: |
           BUNDLE_NAME="$(basename $PWD | sed 's/-lv2//').lv2"
+          rm -rf dist
           mkdir -p dist/$BUNDLE_NAME
           cp -r *.ttl modgui src *.dll *.so dist/$BUNDLE_NAME/ 2>/dev/null || true
           cd dist && zip -r ${BUNDLE_NAME}.zip $BUNDLE_NAME/
