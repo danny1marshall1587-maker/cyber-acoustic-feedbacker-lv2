@@ -1,0 +1,53 @@
+name: Build Multi-Arch LV2 Binaries
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Toolchains
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq build-essential gcc g++ gcc-mingw-w64 g++-mingw-w64 gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf gcc-aarch64-linux-gnu g++-aarch64-linux-gnu lv2-dev zip
+          sudo mkdir -p /usr/local/include/sse2neon
+          sudo curl -sL https://raw.githubusercontent.com/DLTcollab/sse2neon/master/sse2neon.h -o /usr/local/include/sse2neon/sse2neon.h
+          sudo git clone --depth 1 https://github.com/danny1marshall1587-maker/mod-universal-plugin-hub.git /tmp/hub
+          sudo cp -r /tmp/hub/scripts/include/* /usr/local/include/
+      - name: Compile Windows 64-bit DLL
+        run: |
+          SRC=$(find src -name "*.cpp" | head -n 1)
+          NAME=$(basename $PWD | sed 's/-lv2//' | tr '-' '_')
+          x86_64-w64-mingw32-g++ -O3 -std=c++14 -shared -static-libgcc -static-libstdc++ -I. -Isrc -I/usr/local/include $SRC -o ${NAME}.dll -lm -DNDEBUG
+          ls -lh *.dll
+      - name: Compile Linux x86_64 SO
+        run: |
+          SRC=$(find src -name "*.cpp" | head -n 1)
+          NAME=$(basename $PWD | sed 's/-lv2//' | tr '-' '_')
+          g++ -O3 -std=c++14 -fPIC -shared -I. -Isrc -I/usr/local/include $SRC -o ${NAME}_linux_x86_64.so -lm -lpthread -DNDEBUG
+      - name: Compile ARMv7 32-bit SO
+        run: |
+          SRC=$(find src -name "*.cpp" | head -n 1)
+          NAME=$(basename $PWD | sed 's/-lv2//' | tr '-' '_')
+          arm-linux-gnueabihf-g++ -O3 -std=c++14 -fPIC -shared -march=armv7-a -mfpu=neon-vfpv4 -mfloat-abi=hard -I. -Isrc -I/usr/local/include $SRC -o ${NAME}_armv7.so -lm -lpthread -DNDEBUG
+      - name: Compile ARM64 64-bit SO
+        run: |
+          SRC=$(find src -name "*.cpp" | head -n 1)
+          NAME=$(basename $PWD | sed 's/-lv2//' | tr '-' '_')
+          aarch64-linux-gnu-g++ -O3 -std=c++14 -fPIC -shared -march=armv8-a -I. -Isrc -I/usr/local/include $SRC -o ${NAME}_arm64.so -lm -lpthread -DNDEBUG
+      - name: Create Release Package
+        run: |
+          BUNDLE_NAME="cyber-acoustic-feedbacker.lv2"
+          mkdir -p dist/$BUNDLE_NAME
+          cp -r *.ttl modgui src *.dll *.so dist/$BUNDLE_NAME/ 2>/dev/null || true
+          cd dist && zip -r cyber-acoustic-feedbacker-lv2-v1.0.0.zip $BUNDLE_NAME/
+      - name: Upload Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main'
+        with:
+          tag_name: "v1.0.0"
+          name: "cyber-acoustic-feedbacker-lv2 v1.0.0"
+          files: dist/*.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

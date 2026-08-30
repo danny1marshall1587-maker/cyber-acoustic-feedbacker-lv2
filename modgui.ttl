@@ -1,0 +1,49 @@
+@prefix lv2:    <http://lv2plug.in/ns/lv2core#> .
+@prefix modgui: <http://moddevices.com/ns/modgui#> .
+
+<http://cyber-audio.co.uk/plugins/cyber-acoustic-feedbacker>
+    modgui:gui [
+        modgui:resourcesDirectory <modgui> ;
+        modgui:iconTemplate <modgui/icon-cyber-acoustic-feedbacker.html> ;
+        modgui:stylesheet <modgui/stylesheet.css> ;
+        modgui:javascript <modgui/script.js> ;
+        modgui:screenshot <modgui/screenshot-cyber-acoustic-feedbacker.png> ;
+        modgui:thumbnail <modgui/thumbnail-cyber-acoustic-feedbacker.png> ;
+        modgui:brand "CyberAudio" ;
+        modgui:label "Feedbacker" ;
+        modgui:model "boxy" ;
+        modgui:panel "custom" ;
+        modgui:port [
+            lv2:index 0 ;
+            lv2:symbol "mode" ;
+            lv2:name "Mode" ;
+        ] , [
+            lv2:index 1 ;
+            lv2:symbol "bloom" ;
+            lv2:name "Bloom" ;
+        ] , [
+            lv2:index 2 ;
+            lv2:symbol "sens" ;
+            lv2:name "Sens" ;
+        ] , [
+            lv2:index 3 ;
+            lv2:symbol "coupling" ;
+            lv2:name "Coupling" ;
+        ] , [
+            lv2:index 4 ;
+            lv2:symbol "harmonic" ;
+            lv2:name "Harmonic" ;
+        ] , [
+            lv2:index 5 ;
+            lv2:symbol "warmth" ;
+            lv2:name "Warmth" ;
+        ] , [
+            lv2:index 6 ;
+            lv2:symbol "vibrato" ;
+            lv2:name "Vibrato" ;
+        ] , [
+            lv2:index 7 ;
+            lv2:symbol "mix" ;
+            lv2:name "Mix" ;
+        ] ;
+    ] .
