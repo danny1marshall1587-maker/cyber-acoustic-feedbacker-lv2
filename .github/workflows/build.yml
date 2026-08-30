@@ -22,7 +22,7 @@ jobs:
         run: |
           SRC=$(find src -name "*.cpp" | head -n 1)
           NAME=$(basename $PWD | sed 's/-lv2//' | tr '-' '_')
-          x86_64-w64-mingw32-g++ -O3 -std=c++14 -shared -static-libgcc -static-libstdc++ -I. -Isrc -I/usr/local/include $SRC -o ${NAME}.dll -lm -DNDEBUG
+          x86_64-w64-mingw32-g++ -O3 -std=c++14 -shared -Wl,--export-all-symbols -static-libgcc -static-libstdc++ -I. -Isrc -I/usr/local/include $SRC -o ${NAME}.dll -lm -DNDEBUG
           ls -lh *.dll
       - name: Compile Linux x86_64 SO
         run: |
@@ -52,5 +52,6 @@ jobs:
           tag_name: "v1.0.0"
           name: "v1.0.0 Release"
           files: dist/*.zip
+          overwrite: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
