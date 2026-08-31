@@ -3,8 +3,5 @@
 
 <http://cyber-audio.co.uk/plugins/cyber-acoustic-feedbacker>
     a lv2:Plugin ;
-    lv2:binary <cyber_acoustic_feedbacker.dll> ;
-    lv2:binary <cyber_acoustic_feedbacker_linux_x86_64.so> ;
-    lv2:binary <cyber_acoustic_feedbacker_armv7.so> ;
-    lv2:binary <cyber_acoustic_feedbacker_arm64.so> ;
+    lv2:binary <cyber_acoustic_feedbacker.dll> , <cyber_acoustic_feedbacker.so> ;
     rdfs:seeAlso <cyber-acoustic-feedbacker.ttl> , <modgui.ttl> .

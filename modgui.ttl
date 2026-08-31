@@ -23,27 +23,27 @@
             lv2:name "Bloom" ;
         ] , [
             lv2:index 2 ;
-            lv2:symbol "sens" ;
-            lv2:name "Sens" ;
+            lv2:symbol "gain" ;
+            lv2:name "Gain" ;
         ] , [
             lv2:index 3 ;
-            lv2:symbol "coupling" ;
-            lv2:name "Coupling" ;
-        ] , [
-            lv2:index 4 ;
             lv2:symbol "harmonic" ;
             lv2:name "Harmonic" ;
         ] , [
-            lv2:index 5 ;
+            lv2:index 4 ;
             lv2:symbol "warmth" ;
             lv2:name "Warmth" ;
         ] , [
-            lv2:index 6 ;
+            lv2:index 5 ;
             lv2:symbol "vibrato" ;
             lv2:name "Vibrato" ;
         ] , [
-            lv2:index 7 ;
+            lv2:index 6 ;
             lv2:symbol "mix" ;
             lv2:name "Mix" ;
+        ] , [
+            lv2:index 7 ;
+            lv2:symbol "trigger" ;
+            lv2:name "Feedback" ;
         ] ;
     ] .

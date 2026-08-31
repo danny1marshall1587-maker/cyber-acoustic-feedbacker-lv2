@@ -1,0 +1,124 @@
+<div class="mod-pedal mod-pedal-boxy mod-cyber-feedbacker">
+    <div mod-role="drag-handle" class="mod-drag-handle"></div>
+
+    <!-- Jack Connectors (Required by MOD-UI for proper canvas rendering) -->
+    <div class="mod-pedal-input">
+        {{#effect.ports.audio.input}}
+        <div class="mod-input mod-input-image" title="{{name}}" mod-role="input-audio-port" mod-port-symbol="{{symbol}}">
+            <div class="mod-pedal-input-image"></div>
+        </div>
+        {{/effect.ports.audio.input}}
+        {{#effect.ports.midi.input}}
+        <div class="mod-input mod-input-image" title="{{name}}" mod-role="input-midi-port" mod-port-symbol="{{symbol}}">
+            <div class="mod-pedal-input-image"></div>
+        </div>
+        {{/effect.ports.midi.input}}
+        {{#effect.ports.cv.input}}
+        <div class="mod-input mod-input-image" title="{{name}}" mod-role="input-cv-port" mod-port-symbol="{{symbol}}">
+            <div class="mod-pedal-input-image"></div>
+        </div>
+        {{/effect.ports.cv.input}}
+    </div>
+    <div class="mod-pedal-output">
+        {{#effect.ports.audio.output}}
+        <div class="mod-output mod-output-image" title="{{name}}" mod-role="output-audio-port" mod-port-symbol="{{symbol}}">
+            <div class="mod-pedal-output-image"></div>
+        </div>
+        {{/effect.ports.audio.output}}
+        {{#effect.ports.midi.output}}
+        <div class="mod-output mod-output-image" title="{{name}}" mod-role="output-midi-port" mod-port-symbol="{{symbol}}">
+            <div class="mod-pedal-output-image"></div>
+        </div>
+        {{/effect.ports.midi.output}}
+        {{#effect.ports.cv.output}}
+        <div class="mod-output mod-output-image" title="{{name}}" mod-role="output-cv-port" mod-port-symbol="{{symbol}}">
+            <div class="mod-pedal-output-image"></div>
+        </div>
+        {{/effect.ports.cv.output}}
+    </div>
+
+    <!-- Top Branding -->
+    <div class="pedal-top-strip">
+        <div class="mod-pedal-brand">CYBER AUDIO</div>
+        <div class="mod-pedal-model">ACOUSTIC FEEDBACKER &amp; SUSTAINER</div>
+    </div>
+
+    <!-- Mode Selector Pills -->
+    <div class="mode-selector-bar">
+        <button type="button" class="mode-pill active" data-mode="0">ROOT</button>
+        <button type="button" class="mode-pill" data-mode="1">POLY</button>
+        <button type="button" class="mode-pill" data-mode="2">BLOOM</button>
+        <div class="mod-knob-image" mod-role="input-control-port" mod-port-symbol="mode" style="display:none;"></div>
+    </div>
+
+    <!-- Knobs Container -->
+    <div class="cyber-knobs-grid">
+        <div class="knob-cell">
+            <div class="custom-knob-dial" data-symbol="bloom" data-min="0" data-max="100" data-default="40">
+                <div class="knob-rotor"></div>
+            </div>
+            <span class="mod-knob-title">BLOOM</span>
+            <div class="mod-knob-image" mod-role="input-control-port" mod-port-symbol="bloom" style="display:none;"></div>
+        </div>
+
+        <div class="knob-cell">
+            <div class="custom-knob-dial" data-symbol="gain" data-min="0" data-max="100" data-default="75">
+                <div class="knob-rotor"></div>
+            </div>
+            <span class="mod-knob-title">GAIN</span>
+            <div class="mod-knob-image" mod-role="input-control-port" mod-port-symbol="gain" style="display:none;"></div>
+        </div>
+
+        <div class="knob-cell">
+            <div class="custom-knob-dial" data-symbol="harmonic" data-min="0" data-max="4" data-default="1">
+                <div class="knob-rotor"></div>
+            </div>
+            <span class="mod-knob-title">HARMONIC</span>
+            <div class="mod-knob-image" mod-role="input-control-port" mod-port-symbol="harmonic" style="display:none;"></div>
+        </div>
+
+        <div class="knob-cell">
+            <div class="custom-knob-dial" data-symbol="warmth" data-min="0" data-max="100" data-default="50">
+                <div class="knob-rotor"></div>
+            </div>
+            <span class="mod-knob-title">WARMTH</span>
+            <div class="mod-knob-image" mod-role="input-control-port" mod-port-symbol="warmth" style="display:none;"></div>
+        </div>
+
+        <div class="knob-cell">
+            <div class="custom-knob-dial" data-symbol="vibrato" data-min="0" data-max="100" data-default="75">
+                <div class="knob-rotor"></div>
+            </div>
+            <span class="mod-knob-title">VIBRATO</span>
+            <div class="mod-knob-image" mod-role="input-control-port" mod-port-symbol="vibrato" style="display:none;"></div>
+        </div>
+
+        <div class="knob-cell">
+            <div class="custom-knob-dial" data-symbol="mix" data-min="0" data-max="100" data-default="50">
+                <div class="knob-rotor"></div>
+            </div>
+            <span class="mod-knob-title">MIX</span>
+            <div class="mod-knob-image" mod-role="input-control-port" mod-port-symbol="mix" style="display:none;"></div>
+        </div>
+    </div>
+
+    <!-- Dual Footswitches Section -->
+    <div class="pedal-bottom-section">
+        <!-- Trigger / Hold Feedback Switch -->
+        <div class="footswitch-block feedback-switch-block">
+            <div class="trigger-led" id="feedback-trigger-led"></div>
+            <button type="button" class="trigger-footswitch-btn" title="Hold or map MIDI to trigger singing feedback">
+                <div class="footswitch-ring"></div>
+            </button>
+            <span class="switch-title">HOLD FEEDBACK</span>
+            <div class="mod-switch-image" mod-role="input-control-port" mod-port-symbol="trigger" style="display:none;"></div>
+        </div>
+
+        <!-- Master Bypass Switch -->
+        <div class="footswitch-block bypass-switch-block">
+            <div class="mod-led" mod-role="bypass-light"></div>
+            <div class="mod-footswitch" mod-role="bypass"></div>
+            <span class="switch-title">BYPASS</span>
+        </div>
+    </div>
+</div>
