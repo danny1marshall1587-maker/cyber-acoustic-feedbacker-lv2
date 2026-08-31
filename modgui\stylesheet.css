@@ -3,9 +3,10 @@
    Solar Amber / Burning Copper Lava Aesthetic
    ========================================================================== */
 
+.mod-pedal.feedbacker-pedal,
 .mod-pedal.mod-cyber-feedbacker {
     width: 240px;
-    height: 390px;
+    height: 400px;
     background: radial-gradient(circle at 50% 20%, #261608 0%, #150b03 60%, #080401 100%);
     border: 2px solid #78350f;
     border-radius: 18px;
@@ -21,28 +22,60 @@
     user-select: none;
 }
 
-.mod-pedal.mod-cyber-feedbacker .pedal-top-strip {
+.mod-pedal.feedbacker-pedal .mod-plugin-brand,
+.mod-pedal.mod-cyber-feedbacker .mod-plugin-brand {
     text-align: center;
-    margin-bottom: 6px;
+    margin: 0;
 }
 
-.mod-pedal.mod-cyber-feedbacker .mod-pedal-brand {
+.mod-pedal.feedbacker-pedal .mod-plugin-brand h1,
+.mod-pedal.mod-cyber-feedbacker .mod-plugin-brand h1 {
     font-size: 8.5px;
     font-weight: 900;
     letter-spacing: 2px;
     color: #f59e0b;
     text-shadow: 0 0 10px rgba(245, 158, 11, 0.6);
+    margin: 0;
+    padding: 0;
 }
 
-.mod-pedal.mod-cyber-feedbacker .mod-pedal-model {
-    font-size: 7px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: #fde68a;
-    opacity: 0.8;
+.mod-pedal.feedbacker-pedal .mod-plugin-name,
+.mod-pedal.mod-cyber-feedbacker .mod-plugin-name {
+    text-align: center;
+    margin: 1px 0 6px 0;
+}
+
+.mod-pedal.feedbacker-pedal .mod-plugin-name h1,
+.mod-pedal.mod-cyber-feedbacker .mod-plugin-name h1 {
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 14px rgba(245, 158, 11, 0.4);
+    margin: 0;
+    padding: 0;
+}
+
+/* Bypass LED */
+.mod-pedal.feedbacker-pedal .mod-light,
+.mod-pedal.mod-cyber-feedbacker .mod-light {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #451a03;
+    border: 1px solid #78350f;
+    margin-bottom: 6px;
+    transition: all 0.1s ease;
+}
+
+.mod-pedal.feedbacker-pedal .mod-light.on,
+.mod-pedal.mod-cyber-feedbacker .mod-light.on {
+    background: #f59e0b;
+    box-shadow: 0 0 12px #f59e0b, 0 0 20px #f59e0b;
 }
 
 /* Mode Selector Bar */
+.mod-pedal.feedbacker-pedal .mode-selector-bar,
 .mod-pedal.mod-cyber-feedbacker .mode-selector-bar {
     display: flex;
     gap: 4px;
@@ -53,6 +86,7 @@
     margin-bottom: 10px;
 }
 
+.mod-pedal.feedbacker-pedal .mode-pill,
 .mod-pedal.mod-cyber-feedbacker .mode-pill {
     background: transparent;
     border: none;
@@ -65,10 +99,12 @@
     transition: all 0.15s ease;
 }
 
+.mod-pedal.feedbacker-pedal .mode-pill:hover,
 .mod-pedal.mod-cyber-feedbacker .mode-pill:hover {
     color: #fff;
 }
 
+.mod-pedal.feedbacker-pedal .mode-pill.active,
 .mod-pedal.mod-cyber-feedbacker .mode-pill.active {
     background: #f59e0b;
     color: #000;
@@ -76,6 +112,7 @@
 }
 
 /* Knobs Grid */
+.mod-pedal.feedbacker-pedal .cyber-knobs-grid,
 .mod-pedal.mod-cyber-feedbacker .cyber-knobs-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -84,12 +121,14 @@
     margin-bottom: 8px;
 }
 
+.mod-pedal.feedbacker-pedal .knob-cell,
 .mod-pedal.mod-cyber-feedbacker .knob-cell {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.mod-pedal.feedbacker-pedal .custom-knob-dial,
 .mod-pedal.mod-cyber-feedbacker .custom-knob-dial {
     width: 36px;
     height: 36px;
@@ -102,11 +141,13 @@
     transition: border-color 0.15s ease;
 }
 
+.mod-pedal.feedbacker-pedal .custom-knob-dial:hover,
 .mod-pedal.mod-cyber-feedbacker .custom-knob-dial:hover {
     border-color: #f59e0b;
     box-shadow: 0 0 12px rgba(245, 158, 11, 0.5);
 }
 
+.mod-pedal.feedbacker-pedal .knob-rotor,
 .mod-pedal.mod-cyber-feedbacker .knob-rotor {
     width: 2px;
     height: 13px;
@@ -119,6 +160,7 @@
     border-radius: 1px;
 }
 
+.mod-pedal.feedbacker-pedal .mod-knob-title,
 .mod-pedal.mod-cyber-feedbacker .mod-knob-title {
     font-size: 7px;
     font-weight: 800;
@@ -130,6 +172,7 @@
 }
 
 /* Dual Footswitches Bottom Section */
+.mod-pedal.feedbacker-pedal .pedal-bottom-section,
 .mod-pedal.mod-cyber-feedbacker .pedal-bottom-section {
     width: 100%;
     margin-top: auto;
@@ -140,6 +183,7 @@
     border-top: 1px solid rgba(120, 53, 15, 0.6);
 }
 
+.mod-pedal.feedbacker-pedal .footswitch-block,
 .mod-pedal.mod-cyber-feedbacker .footswitch-block {
     display: flex;
     flex-direction: column;
@@ -147,6 +191,7 @@
     gap: 4px;
 }
 
+.mod-pedal.feedbacker-pedal .switch-title,
 .mod-pedal.mod-cyber-feedbacker .switch-title {
     font-size: 6.5px;
     font-weight: 800;
@@ -155,31 +200,28 @@
     text-align: center;
 }
 
-/* LEDs */
-.mod-pedal.mod-cyber-feedbacker .mod-led,
+/* Trigger Footswitch LED */
+.mod-pedal.feedbacker-pedal .trigger-led,
 .mod-pedal.mod-cyber-feedbacker .trigger-led {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #451a03;
-    border: 1px solid #78350f;
+    background: #022c22;
+    border: 1px solid #065f46;
     transition: all 0.1s ease;
 }
 
-.mod-pedal.mod-cyber-feedbacker .mod-led.on {
-    background: #f59e0b;
-    box-shadow: 0 0 12px #f59e0b, 0 0 20px #f59e0b;
-}
-
+.mod-pedal.feedbacker-pedal .trigger-led.on,
 .mod-pedal.mod-cyber-feedbacker .trigger-led.on {
     background: #00ffcc;
     box-shadow: 0 0 12px #00ffcc, 0 0 20px #00ffcc;
 }
 
 /* Trigger Footswitch Button */
+.mod-pedal.feedbacker-pedal .trigger-footswitch-btn,
 .mod-pedal.mod-cyber-feedbacker .trigger-footswitch-btn {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     background: radial-gradient(circle at 35% 35%, #52525b 0%, #27272a 60%, #09090b 100%);
     border: 2px solid #71717a;
@@ -191,6 +233,8 @@
     transition: transform 0.05s ease, box-shadow 0.05s ease;
 }
 
+.mod-pedal.feedbacker-pedal .trigger-footswitch-btn:active,
+.mod-pedal.feedbacker-pedal .trigger-footswitch-btn.pressed,
 .mod-pedal.mod-cyber-feedbacker .trigger-footswitch-btn:active,
 .mod-pedal.mod-cyber-feedbacker .trigger-footswitch-btn.pressed {
     transform: scale(0.92);
@@ -198,6 +242,7 @@
     border-color: #00ffcc;
 }
 
+.mod-pedal.feedbacker-pedal .trigger-footswitch-btn .footswitch-ring,
 .mod-pedal.mod-cyber-feedbacker .trigger-footswitch-btn .footswitch-ring {
     width: 16px;
     height: 16px;
